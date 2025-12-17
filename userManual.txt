@@ -1,0 +1,37 @@
+Welcome to AzureLearn!
+
+Before you begin learning, read this manual to ensure you comprehend the pre-requisites and components that exist within the command-line-interface tool.
+
+To ensure you comprehend the learning modules, refer to this manual for tool documentation and basic concept explanation.
+
+Pre-requisite:
+Azure PowerShell
+Az CLI
+Python
+Terraform
+Azure account
+
+Azure PowerShell
+To enumerate resource from the whole tenant:
+Get-AzResource
+To enumerate the name of the domain:
+Get-AzDomain
+To enumerate resource from the whole tenant:
+Get-AzResource
+To enumerate resource application in the tenant:
+Get-AzADApplication
+To enumerate blob storage in the tenant:
+Get-AzStorageAccount
+To enumerate key vault in the tenant:
+Get-AzKeyVault
+To enumerate the secret of a key vault:
+Get-AzKeyVaultSecret -VaultName [name_of_key_vault]
+To enumerate the role assignments:
+Get-AzRoleAssignment -SignInName [email]
+Az CLI
+To check the current session of az CLI:
+az ad signed-in-user show
+To check owned objects of a user:
+az ad signed-in-user list-owned-objects
+To request for access token of the logged in user:
+az account get-access-token
