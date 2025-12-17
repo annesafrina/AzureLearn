@@ -1,37 +1,100 @@
-Welcome to AzureLearn!
+# Welcome to AzureLearn
 
 Before you begin learning, read this manual to ensure you comprehend the pre-requisites and components that exist within the command-line-interface tool.
 
 To ensure you comprehend the learning modules, refer to this manual for tool documentation and basic concept explanation.
 
-Pre-requisite:
-Azure PowerShell
-Az CLI
-Python
-Terraform
-Azure account
+# Disclaimer
 
-Azure PowerShell
-To enumerate resource from the whole tenant:
+This tool is intended for educational and defensive security training only.  
+Do not use against systems you do not own or have explicit permission to test.
+
+---
+
+# Pre-requisites
+
+Azure account  
+Azure PowerShell  
+Az CLI  
+Python  
+Terraform  
+
+---
+
+# Azure PowerShell
+To authenticate interactively:
+Connect-AzAccount
+
+To authenticate using access tokens (non-interactive):
+Connect-AzAccount -AccessToken $ARMToken -MicrosoftGraphAccessToken $graphToken -AccountId user@tenant.onmicrosoft.com
+
+To enumerate resources from the whole tenant:
 Get-AzResource
+
 To enumerate the name of the domain:
 Get-AzDomain
-To enumerate resource from the whole tenant:
-Get-AzResource
-To enumerate resource application in the tenant:
+
+To enumerate resource applications in the tenant:
 Get-AzADApplication
+
 To enumerate blob storage in the tenant:
 Get-AzStorageAccount
-To enumerate key vault in the tenant:
+
+To enumerate key vaults in the tenant:
 Get-AzKeyVault
-To enumerate the secret of a key vault:
-Get-AzKeyVaultSecret -VaultName [name_of_key_vault]
-To enumerate the role assignments:
-Get-AzRoleAssignment -SignInName [email]
-Az CLI
+
+To enumerate secrets of a key vault:
+Get-AzKeyVaultSecret -VaultName <name_of_key_vault>
+
+To enumerate role assignments:
+Get-AzRoleAssignment -SignInName <email>
+
+To authenticate as a service principal:
+$password = ConvertTo-SecureString "<client_secret>" -AsPlainText -Force  
+$credential = New-Object System.Management.Automation.PSCredential("<app_id>", $password)  
+Connect-AzAccount -ServicePrincipal -Tenant <tenant_id> -Credential $credential
+
+---
+
+# Az CLI
+
 To check the current session of az CLI:
 az ad signed-in-user show
+
 To check owned objects of a user:
 az ad signed-in-user list-owned-objects
-To request for access token of the logged in user:
+
+To request an access token of the logged-in user:
 az account get-access-token
+
+To check current subscription:
+az account show
+
+To list all subscriptions:
+az account list
+
+---
+
+# Terraform
+
+To initialize Terraform:
+terraform init
+
+To deploy the lab environment:
+terraform apply -auto-approve
+
+To destroy the lab environment:
+terraform destroy -auto-approve
+
+---
+
+# Running AzureLearn CLI
+
+To run the CLI tool:
+python cli.py
+
+Available modes:
+Independent mode  
+Guided mode  
+Resume mode  
+
