@@ -21,6 +21,16 @@ Terraform
 
 ---
 
+# How to Deploy The Learning Lab:
+- Login using your Azure account (as Global Administrator)
+-Run cli.py on your terminal
+-Choose Independent mode or Guided mode
+-Wait for the Terraform to deploy the lab
+
+
+---
+
+
 # Azure PowerShell
 To authenticate interactively:
 Connect-AzAccount
